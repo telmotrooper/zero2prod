@@ -4,6 +4,17 @@ version = "0.1.0"
 authors = ["Telmo \"Trooper\" <telmo.trooper@gmail.com>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "zero2prod"
 
 [dependencies]
+actix-web = "3.3.2"
+actix-rt = "1.1.1"
+
+[dev-dependencies]
+reqwest = "0.10.10"
+tokio = "0.2.22"
