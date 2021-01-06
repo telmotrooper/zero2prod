@@ -1,7 +1,6 @@
 use actix_web::{web, HttpResponse};
 use chrono::Utc;
 use sqlx::PgPool;
-use std::ops::Deref;
 use uuid::Uuid;
 
 #[derive(serde::Deserialize)]
@@ -25,7 +24,7 @@ pub async fn subscribe(
         form.name,
         Utc::now()
     )
-    .execute(pool.get_ref())
+    .execute(pool.as_ref())
     .await
     .map_err(|e| {
         eprintln!("Failed to execute query: {}", e);
