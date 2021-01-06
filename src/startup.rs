@@ -14,7 +14,7 @@ pub fn run(listener: TcpListener, db_pool: PgPool) -> Result<Server, std::io::Er
             .route("/health_check", web::get().to(health_check))
             .route("/subscriptions", web::post().to(subscribe))
             // Get a pointer copy and attach it to the application state
-            .data(db_pool.clone())
+            .app_data(db_pool.clone())
     })
     .listen(listener)?
     .run();
